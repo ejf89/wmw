@@ -32,7 +32,7 @@
       </div>
 
       <div class="featured-collection-product-title">
-        <h5 >{{ product.title | escape }}</h5>
+        <h5 data-url="{{ product.url | within: collection }}" >{{ product.title | escape }}</h5>
 
         <span class="featured-collection-price-container">
           {% include 'product-price' %}
@@ -42,6 +42,11 @@
   {% endfor %}
 
 </div>
+
+
+<a class="collection-button" href="{{ collection.url }}">View collection</a>
+
+
 
 </section>
 

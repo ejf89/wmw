@@ -34,43 +34,34 @@ register('featured-collection', {
       }
 
       function ajaxCart(){
-        $('.featured-collection-card').on('click', function(e){
+        $('.featured-collection-card-cta').on('click', function(e){
           e.preventDefault()
-        })
-
-
-        $('.featured-collection-card-cta ').on('click touchstart', function(e){
-          e.preventDefault()
-
           var $this = $(this)
           var variant_id = $this.data('variant-id')
           var quantity = $this.data('quantity')
 
-
-
-
-          console.log(this);
-          console.log(variant_id);
-          console.log(quantity);
-
-          var data = JSON.stringify({
-            quantity: quantity,
-            id: variant_id
-          })
-
-
-       $.post('/cart/add.js', {
+          var data = {
             quantity: quantity,
             id: variant_id
           }
-        )
 
-
-
-
+       $.ajax({
+           url: "/cart/add.js",
+           data: data,
+           dataType: 'json',
+           success: function(res){
+                     var text = $('.site-header__cart').text()
+                     var count = parseInt(text.trim().split('(')[1].slice(0,1))
+                     count += 1
+                    $('.site-header__cart').text(`Cart (${count}) `)
+             console.log(res);
+           }
+         })
         })
 
-
+        $('.featured-collection-product-title').on('click touchstart', function(){
+          console.log($(this).data('img_url'));
+        })
       }
 
       cartHoverState()

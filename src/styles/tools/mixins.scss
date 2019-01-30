@@ -39,13 +39,54 @@
  *   @include transition(width, height 0.5s ease-in);
  * }
  */
-@mixin transition($transitions...) {
-  $output: ();
+// @mixin transition($transitions...) {
+//   $output: ();
+//
+//   @each $transition in $transitions {
+//     $output: append($output, get-transition-properties($transition), comma);
+//   }
+//   transition: $output;
+// }
 
+
+//  _______ _____            _   _  _____ _____ _______ _____ ____  _   _
+// |__   __|  __ \     /\   | \ | |/ ____|_   _|__   __|_   _/ __ \| \ | |
+//    | |  | |__) |   /  \  |  \| | (___   | |    | |    | || |  | |  \| |
+//    | |  |  _  /   / /\ \ | . ` |\___ \  | |    | |    | || |  | | . ` |
+//    | |  | | \ \  / ____ \| |\  |____) |_| |_   | |   _| || |__| | |\  |
+//    |_|  |_|  \_\/_/    \_\_| \_|_____/|_____|  |_|  |_____\____/|_| \_|
+
+@mixin transition($transitions...) {
+  $unfoldedTransitions: ();
   @each $transition in $transitions {
-    $output: append($output, get-transition-properties($transition), comma);
+    $unfoldedTransitions: append($unfoldedTransitions, unfoldTransition($transition), comma);
   }
-  transition: $output;
+
+  -webkit-transition: $unfoldedTransitions;
+  transition: $unfoldedTransitions;
+}
+
+@function unfoldTransition ($transition) {
+  // Default values
+  $property: all;
+  $duration: 400ms;
+  $easing: ease-in-out; // Browser default is ease, which is what we want
+  $delay: 0s; // Browser default is 0, which is what we want
+  $defaultProperties: ($property, $duration, $easing, $delay);
+
+  // Grab transition properties if they exist
+  $unfoldedTransition: ();
+  @for $i from 1 through length($defaultProperties) {
+    $p: null;
+    @if $i <= length($transition) {
+      $p: nth($transition, $i)
+    } @else {
+      $p: nth($defaultProperties, $i)
+    }
+    $unfoldedTransition: append($unfoldedTransition, $p);
+  }
+
+  @return $unfoldedTransition;
 }
 
 /**
