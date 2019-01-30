@@ -51,7 +51,7 @@ register('featured-collection', {
            dataType: 'json',
            success: function(res){
                      var text = $('.site-header__cart').text()
-                     var count = parseInt(text.trim().split('(')[1].slice(0,1))
+                     var count = parseInt(text.trim().split('(')[1].slice(0, -1))
                      count += 1
                     $('.site-header__cart').text(`Cart (${count}) `)
              console.log(res);

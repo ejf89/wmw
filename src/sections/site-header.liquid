@@ -46,12 +46,14 @@
     {% else %}
       </div>
     {% endif %}
-
-    <a class="site-header__cart" href="/cart">
+    <div class="">
       {% include 'icon-cart' %}
-      {{ 'layout.cart.title' | t }}
-      ({{ cart.item_count }})
-    </a>
+      <a class="site-header__cart" href="/cart">
+        {{ 'layout.cart.title' | t }}
+        ({{ cart.item_count }})
+      </a>
+
+    </div>
   </header>
 </section>
 
