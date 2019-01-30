@@ -107,3 +107,44 @@
   margin: 0;
   clip: auto;
 }
+
+
+
+$gutter: 10px;
+$grid-gap: 10px;
+
+/*================ Basic Grid Mixin ================*/
+@mixin grid{
+  display: grid;
+  grid-auto-rows: auto 1fr;
+  grid-column-gap: $grid-gap;
+  grid-row-gap: $grid-gap;
+  grid-auto-rows: 1fr;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+}
+
+.grid-left{justify-content: left !important; align-content: left !important; justify-items: left !important;}
+.grid-right{justify-content: right !important;align-content: right !important;justify-items: right !important;}
+
+/*================ Standard Grids ================*/
+.grid-2  { @include grid; grid-template-columns: repeat(2, 1fr);}
+.grid-3  { @include grid; grid-template-columns: repeat(3, 1fr);}
+.grid-4  { @include grid; grid-template-columns: repeat(4, 1fr);}
+.grid-5  { @include grid; grid-template-columns: repeat(5, 1fr);}
+.grid-6  { @include grid; grid-template-columns: repeat(6, 1fr);}
+.grid-7  { @include grid; grid-template-columns: repeat(7, 1fr);}
+.grid-8  { @include grid; grid-template-columns: repeat(8, 1fr);}
+.grid-9  { @include grid; grid-template-columns: repeat(9, 1fr);}
+.grid-10 { @include grid; grid-template-columns: repeat(10, 1fr);}
+
+@include media-query($small){
+  .grid-3, .grid-4,
+  .grid-5, .grid-6,
+  .grid-7, .grid-8,
+  .grid-9, .grid-10,
+  .grid-2-1, .grid-2-break-1{
+    @include grid; grid-template-columns: repeat(1, 1fr) !important;
+  }
+};

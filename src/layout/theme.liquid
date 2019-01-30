@@ -37,9 +37,10 @@
   {% include 'style-tags', layout: 'theme' %}
   {% include 'css-variables' %}
 
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="script.js"></script>
   <script>
     document.documentElement.className = document.documentElement.className.replace('no-js', '');
-
     window.theme = {
       strings: {
         addToCart: {{ 'products.product.add_to_cart' | t | json }},

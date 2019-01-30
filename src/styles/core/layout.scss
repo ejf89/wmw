@@ -13,3 +13,42 @@ body,
 html {
   height: 100%;
 }
+
+
+// STYLE GUIDE
+h1{
+  font-size: 40px;
+  @include media-query($medium-down){
+    font-size: 28px;
+  };
+}
+h2{
+  font-size: 36px;
+  @include media-query($medium-down){
+    font-size: 24px;
+  };
+}
+h3{
+  font-size: 30px;
+  @include media-query($medium-down){
+    font-size: 18px;
+  };
+}
+h4{
+  font-size: 24px;
+  @include media-query($medium-down){
+    font-size: 28px;
+  };
+}
+h5{
+  font-size: 21px;
+  @include media-query($medium-down){
+    font-size: 16px;
+  };
+}
+h6{
+  font-size: 18px;
+  @include media-query($medium-down){
+    font-size: 14px;
+  };
+}

@@ -18,10 +18,72 @@ register('featured-collection', {
 
   init() {
     window.console.log('Initialising featured collection section');
+
+
+      function cartHoverState() {
+        var card = $(".featured-collection-card");
+        card.on('mouseenter', function(){
+          var $this = $(this)
+          var cta = $this.find('.featured-collection-card-cta')
+          cta.removeClass('visually-hidden')
+
+          $this.on('mouseleave', function(){
+            cta.addClass('visually-hidden')
+          })
+        })
+      }
+
+      function ajaxCart(){
+        $('.featured-collection-card').on('click', function(e){
+          e.preventDefault()
+        })
+
+
+        $('.featured-collection-card-cta ').on('click touchstart', function(e){
+          e.preventDefault()
+
+          var $this = $(this)
+          var variant_id = $this.data('variant-id')
+          var quantity = $this.data('quantity')
+
+
+
+
+          console.log(this);
+          console.log(variant_id);
+          console.log(quantity);
+
+          var data = JSON.stringify({
+            quantity: quantity,
+            id: variant_id
+          })
+
+
+       $.post('/cart/add.js', {
+            quantity: quantity,
+            id: variant_id
+          }
+        )
+
+
+
+
+        })
+
+
+      }
+
+      cartHoverState()
+      ajaxCart()
+
+
+
+
   },
 
   publicMethod() {
     // Custom public section method
+
   },
 
   _privateMethod() {
