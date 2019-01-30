@@ -5,7 +5,6 @@
  *
  */
 .featured-collection {
-  // border: 2px solid red;
   padding: 0 54px;
   max-width: 1200px;
   margin: auto;
@@ -27,14 +26,14 @@
   color: black;
   margin-bottom: 0;
   font-size: 40px;
-  color: #003366;
+  color: $color-primary;
   @include media-query($medium-down){
     font-size: 28px;
   };
 }
 
 .featured-collection-description{
-   color: #9B9B9B;
+   color: $color-secondary;
    margin-top: 19px;
    @include media-query($medium-down){
      font-size: 14px;
@@ -59,7 +58,7 @@ a.featured-collection-card{
 }
 
 .featured-collection-card{
-  color: #003366;
+  color: $color-primary;
   position: relative;
 }.featured-collection-image-wrapper{
   position: relative;
@@ -80,7 +79,7 @@ a.featured-collection-card{
   font-size: 23px;
   font-weight: bold;
   opacity: 1;
-  color: #003366;
+  color: $color-primary;
 }
 
 
@@ -96,12 +95,12 @@ a.featured-collection-card{
 
 
 .featured-collection-price-container{
-  color: #9B9B9B;
+  color: $color-secondary;
 }
 
 .collection-button{
   color: white;
-  background-color: #003366;
+  background-color: $color-primary;
   font-size: 18px;
   max-width: 271px;
   display: block;
